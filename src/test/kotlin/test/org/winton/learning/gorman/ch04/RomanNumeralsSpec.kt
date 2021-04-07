@@ -35,4 +35,8 @@ class RomanNumeralsSpec : FunSpec({
             row(8, "viii")
         ).forAll { number, result -> number.toRoman().shouldBe(result) }
     }
+
+    test("9 is ix") {
+        9.toRoman().shouldBe("ix")
+    }
 })
