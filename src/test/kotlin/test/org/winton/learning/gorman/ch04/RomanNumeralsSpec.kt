@@ -39,4 +39,18 @@ class RomanNumeralsSpec : FunSpec({
     test("9 is ix") {
         9.toRoman().shouldBe("ix")
     }
+
+    test("10, 11, 12, 13") {
+        table(
+            headers("number", "result"),
+            row(10, "x"),
+            row(11, "xi"),
+            row(12, "xii"),
+            row(13, "xiii")
+        ).forAll { number, result -> number.toRoman().shouldBe(result) }
+    }
+
+    test("14 is xiv") {
+        14.toRoman().shouldBe("xiv")
+    }
 })
