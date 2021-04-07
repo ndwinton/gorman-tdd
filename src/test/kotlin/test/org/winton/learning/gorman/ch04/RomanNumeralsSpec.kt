@@ -1,11 +1,38 @@
 package test.org.winton.learning.gorman.ch04
 
 import io.kotest.core.spec.style.FunSpec
+import io.kotest.data.forAll
+import io.kotest.data.headers
+import io.kotest.data.row
+import io.kotest.data.table
 import io.kotest.matchers.shouldBe
 import uk.org.winton.learning.gorman.ch04.toRoman
 
 class RomanNumeralsSpec : FunSpec({
-    test("1 is i") {
-        1.toRoman().shouldBe("i")
+
+    test("Simplest single-digit cases") {
+        table(
+            headers("number", "result"),
+            row(1, "i"),
+            row(2, "ii"),
+            row(3, "iii")
+        ).forAll { number, result -> number.toRoman().shouldBe(result) }
+    }
+
+    test("4 is iv") {
+        4.toRoman().shouldBe("iv")
+    }
+
+    test("5 is v") {
+        5.toRoman().shouldBe("v")
+    }
+
+    test("6, 7, 8") {
+        table(
+            headers("number", "result"),
+            row(6, "vi"),
+            row(7, "vii"),
+            row(8, "viii")
+        ).forAll { number, result -> number.toRoman().shouldBe(result) }
     }
 })
