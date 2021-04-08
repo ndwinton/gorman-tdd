@@ -78,4 +78,16 @@ class RomanNumeralsSpec : FunSpec({
     test("388 -> ccclxxxviii - c as a units digit") {
         388.toRoman().shouldBe("ccclxxxviii")
     }
+
+    test("499 -> cdxcix - introduces d") {
+        499.toRoman().shouldBe("cdxcix")
+    }
+
+    test("900 -> cm - introduces m") {
+        900.toRoman().shouldBe("cm")
+    }
+
+    test("3999 -> mmmcmxcix - limit of problem") {
+        3999.toRoman().shouldBe("mmmcmxcix")
+    }
 })
