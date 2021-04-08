@@ -54,12 +54,24 @@ class RomanNumeralsSpec : FunSpec({
         14.toRoman().shouldBe("xiv")
     }
 
-    test("19, 20, 21") {
+    test("19, 20, 21 -> x as a leading element") {
         table(
             headers("number", "result"),
             row(19, "xix"),
             row(20, "xx"),
             row(21, "xxi"),
         ).forAll { number, result -> number.toRoman().shouldBe(result) }
+    }
+
+    test("44 -> xliv - requires the introduction of l") {
+        44.toRoman().shouldBe("xliv")
+    }
+
+    test("88 -> lxxxviii - l as a leading element") {
+        88.toRoman().shouldBe("lxxxviii")
+    }
+
+    test("99 -> xcix - introduces c") {
+        99.toRoman().shouldBe("xcix")
     }
 })
