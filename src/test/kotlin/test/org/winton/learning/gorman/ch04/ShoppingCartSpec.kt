@@ -31,8 +31,13 @@ class ShoppingCartSpec : FunSpec({
         cart.price.shouldBe(13.0.bd)
     }
 
-    test("Total price > 100 and < 200 attract 5% discount") {
+    test("Total price > 100 and < 200 attracts 5% discount") {
         val cart = Cart(listOf(LineItem(50.0.bd, 3)))
         cart.price.shouldBe(142.5.bd)
+    }
+
+    test("Total price > 200 attracts 10% discount") {
+        val cart = Cart(listOf(LineItem(50.0.bd, 3), LineItem(25.0.bd, 3)))
+        cart.price.shouldBe(202.5.bd)
     }
 })
