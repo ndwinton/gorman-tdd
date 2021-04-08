@@ -1,8 +1,9 @@
 package uk.org.winton.learning.gorman.ch04
 
 fun Int.toRoman(): String {
-    val tens = (this / 10).romanUnits("x", "l", "c")
-    return tens + (this % 10).romanUnits("i", "v", "x")
+    val hundreds = (this / 100).romanUnits("c", "?", "?")
+    val tens = ((this % 100) / 10).romanUnits("x", "l", "c")
+    return hundreds + tens + (this % 10).romanUnits("i", "v", "x")
 }
 
 private fun Int.romanUnits(onesLetter: String, fivesLetter: String, tensLetter: String): String {
