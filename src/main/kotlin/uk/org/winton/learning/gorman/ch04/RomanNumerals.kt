@@ -1,7 +1,7 @@
 package uk.org.winton.learning.gorman.ch04
 
 fun Int.toRoman(): String {
-    val tens = if (this >= 10) "x" else ""
+    val tens = "x".repeat(this / 10)
     return tens + (this % 10).romanUnits()
 }
 

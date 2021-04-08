@@ -53,4 +53,13 @@ class RomanNumeralsSpec : FunSpec({
     test("14 is xiv") {
         14.toRoman().shouldBe("xiv")
     }
+
+    test("19, 20, 21") {
+        table(
+            headers("number", "result"),
+            row(19, "xix"),
+            row(20, "xx"),
+            row(21, "xxi"),
+        ).forAll { number, result -> number.toRoman().shouldBe(result) }
+    }
 })
