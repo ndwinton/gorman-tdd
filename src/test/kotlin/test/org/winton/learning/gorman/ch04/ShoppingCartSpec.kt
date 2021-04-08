@@ -20,4 +20,14 @@ class ShoppingCartSpec : FunSpec({
         val cart = Cart(listOf(LineItem(42.0.bd, 1)))
         cart.price.shouldBe(42.0.bd)
     }
+
+    test("Price for multiple line items < 100.0 should be the sum of the item prices") {
+        val cart = Cart(listOf(LineItem(42.0.bd, 1), LineItem(21.0.bd, 1)))
+        cart.price.shouldBe(63.0.bd)
+    }
+
+    test("Total price < 100.0 should take account of item quantities") {
+        val cart = Cart(listOf(LineItem(1.0.bd, 3), LineItem(2.0.bd, 5)))
+        cart.price.shouldBe(13.0.bd)
+    }
 })

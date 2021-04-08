@@ -4,7 +4,7 @@ import java.math.BigDecimal
 
 class Cart(private val lineItems: List<LineItem>) {
 
-    val price: BigDecimal get() = lineItems.sumOf { it.price }
+    val price: BigDecimal get() = lineItems.sumOf { it.price * it.quantity.toBigDecimal() }
 }
 
 data class LineItem(val price: BigDecimal, val quantity: Int)
